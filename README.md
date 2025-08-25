@@ -1,2 +1,3 @@
-# StickerOptimizer_html_page
-Sticker Optimiser iOs App web page
+Copyright (c) 2025 [Marius Girutis / ccholio@gmail.com
+StickerOptimiser App belongs to Marius Girutis.
+All Rights Reserved.  

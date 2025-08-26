@@ -22,29 +22,36 @@
                     height: auto;
                 }
             }
+            /* Ensure the cocoen container can receive pointer events so the slider works on all devices.
+               Previously pointer-events: none prevented children from receiving touch events on mobile. */
             .cocoen-container {
-                
-                pointer-events: none; 
+                pointer-events: auto;
             }
 
             .cocoen-drag {
                 position: relative;
-                z-index: 10; 
+                z-index: 10;
+                touch-action: none; /* allow the handle to capture horizontal drag gestures */
             }
 
-            .cocoen-drag::before {
-                content: '';
-                position: absolute;
-                top: -30px; 
-                left: -30px;
-                right: -30px;
-                bottom: -30px;
-                border-radius: 50%;
-                pointer-events: auto; /* Dabar šis elementas reaguos į pelės/lietimo įvykius */
+            /* Expand the hit area for the drag handle only on non-touch/desktop devices to avoid
+               intercepting vertical scroll on mobile. */
+            @media (min-width: 769px) {
+                .cocoen-drag::before {
+                    content: '';
+                    position: absolute;
+                    top: -30px;
+                    left: -30px;
+                    right: -30px;
+                    bottom: -30px;
+                    border-radius: 50%;
+                    pointer-events: auto; /* Now clickable on desktop */
+                }
             }
-            /*  linija irgi būtų interaktyvi, bet be išplėstos zonos */
+
+            /* Line should be interactive as before */
             .cocoen-line {
-                pointer-events: auto; 
+                pointer-events: auto;
             }
         </style>
         

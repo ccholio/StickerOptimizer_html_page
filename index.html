@@ -22,6 +22,30 @@
                     height: auto;
                 }
             }
+            .cocoen-container {
+                
+                pointer-events: none; 
+            }
+
+            .cocoen-drag {
+                position: relative;
+                z-index: 10; 
+            }
+
+            .cocoen-drag::before {
+                content: '';
+                position: absolute;
+                top: -30px; 
+                left: -30px;
+                right: -30px;
+                bottom: -30px;
+                border-radius: 50%;
+                pointer-events: auto; /* Dabar šis elementas reaguos į pelės/lietimo įvykius */
+            }
+            /*  linija irgi būtų interaktyvi, bet be išplėstos zonos */
+            .cocoen-line {
+                pointer-events: auto; 
+            }
         </style>
         
     </head>

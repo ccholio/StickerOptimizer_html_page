@@ -198,11 +198,12 @@
                         <p class="h3 fw-light mb-6">In seconds, optimize your layouts and reduce material waste for a better price.</p>
                     </div>
                     <figure class="cocoen rounded">
-                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19big.jpg"
-                            data-mobile-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19bigcrop.jpg"
+                        <!-- Use cropped image as default (mobile-first). data-desktop-src holds the large desktop image -->
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19bigcrop.jpg"
+                            data-desktop-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19big.jpg"
                             alt="...">
-                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22big.jpg"
-                            data-mobile-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22bigcrop.jpg"
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22bigcrop.jpg"
+                            data-desktop-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22big.jpg"
                             alt="...">
                     </figure>           
                 </div>
@@ -324,21 +325,24 @@
         <script src="assets/js/core.min.js"></script>
         <script>
             function switchImagesForMobile() {
-                const images = document.querySelectorAll('figure.cocoen img[data-mobile-src]');
-                const isMobile = window.innerWidth <= 768;
+                // Toggle between cropped default images (mobile) and large desktop images stored in data-desktop-src
+                const images = document.querySelectorAll('figure.cocoen img[data-desktop-src]');
+                const isDesktop = window.innerWidth >= 769;
 
                 images.forEach(img => {
-                    const mobileSrc = img.getAttribute('data-mobile-src');
-                    const originalSrc = img.getAttribute('src');
+                    const desktopSrc = img.getAttribute('data-desktop-src');
+                    const currentSrc = img.getAttribute('src');
 
-                    if (isMobile && mobileSrc) {
-                        if (img.src !== mobileSrc) {
-                            img.setAttribute('data-original-src', originalSrc);
+                    if (isDesktop && desktopSrc) {
+                        if (currentSrc !== desktopSrc) {
+                            img.setAttribute('data-mobile-src', currentSrc); // save cropped mobile src
+                            img.src = desktopSrc;
+                        }
+                    } else if (!isDesktop && img.hasAttribute('data-mobile-src')) {
+                        const mobileSrc = img.getAttribute('data-mobile-src');
+                        if (currentSrc !== mobileSrc) {
                             img.src = mobileSrc;
                         }
-                    } else if (!isMobile && img.hasAttribute('data-original-src')) {
-                        img.src = img.getAttribute('data-original-src');
-                        img.removeAttribute('data-original-src');
                     }
                 });
             }
@@ -348,6 +352,75 @@
 
             // Paleidžiame funkciją, kai keičiamas lango dydis
             window.addEventListener('resize', switchImagesForMobile);
+
+            /*
+             * Touch-direction guard for .cocoen slider
+             * - Detects whether a touch gesture is primarily horizontal or vertical.
+             * - If horizontal, prevents the page from vertically scrolling so the slider can handle the drag.
+             * - Only attaches once per figure (idempotent).
+             */
+            function enableCocoenTouchDirectionGuard() {
+                const figures = document.querySelectorAll('figure.cocoen');
+                figures.forEach(fig => {
+                    if (fig.__touchGuardAttached) return;
+
+                    let startX = 0;
+                    let startY = 0;
+                    let locked = false; // we've decided horizontal or vertical
+                    let isHorizontal = false;
+
+                    function onStart(e) {
+                        if (!e.touches || e.touches.length > 1) return;
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        locked = false;
+                        isHorizontal = false;
+                    }
+
+                    function onMove(e) {
+                        if (!e.touches || e.touches.length > 1) return;
+                        const dx = e.touches[0].clientX - startX;
+                        const dy = e.touches[0].clientY - startY;
+                        const adx = Math.abs(dx);
+                        const ady = Math.abs(dy);
+                        const threshold = 8; // pixels before we decide
+
+                        if (!locked) {
+                            if (adx > threshold && adx > ady) {
+                                locked = true;
+                                isHorizontal = true;
+                            } else if (ady > threshold && ady > adx) {
+                                locked = true;
+                                isHorizontal = false;
+                            }
+                        }
+
+                        // If gesture is horizontal, prevent vertical page scroll so the slider can receive the drag
+                        if (locked && isHorizontal) {
+                            // We added passive:false when binding, so preventDefault will work
+                            e.preventDefault();
+                        }
+                    }
+
+                    function onEnd() {
+                        startX = 0;
+                        startY = 0;
+                        locked = false;
+                        isHorizontal = false;
+                    }
+
+                    // touchstart/touchend can be passive; touchmove must be non-passive to allow preventDefault
+                    fig.addEventListener('touchstart', onStart, { passive: true });
+                    fig.addEventListener('touchmove', onMove, { passive: false });
+                    fig.addEventListener('touchend', onEnd, { passive: true });
+
+                    fig.__touchGuardAttached = true;
+                });
+            }
+
+            // Initialize the touch guard on load and resize (idempotent)
+            window.addEventListener('load', enableCocoenTouchDirectionGuard);
+            window.addEventListener('resize', enableCocoenTouchDirectionGuard);
         </script>
         
     </body>

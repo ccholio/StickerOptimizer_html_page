@@ -58,14 +58,11 @@
         }
 
         if (locked && !isHorizontal){
-            // vertical gesture -> disable pointer events on the active cocoen so vendor handlers won't catch the events
-            try{ active.style.pointerEvents = 'none'; }
-            catch(err){}
-        } else if (locked && isHorizontal){
-            // horizontal gesture -> ensure vendor can handle events
-            try{ active.style.pointerEvents = 'auto'; }
-            catch(err){}
+            // vertical gesture -> stop other listeners (vendor handlers) from receiving this touchmove
+            try{ e.stopImmediatePropagation(); }catch(err){}
+            // do NOT call preventDefault — allow native scroll
         }
+        // if horizontal, do nothing and let vendor handlers run
     }
 
     function clear(){
@@ -80,7 +77,8 @@
 
     // Capture-phase listeners so this runs before vendor handlers attached in bubble phase
     document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
-    document.addEventListener('touchmove', onTouchMove, { passive: true, capture: true });
+    // touchmove must be non-passive so stopImmediatePropagation is allowed
+    document.addEventListener('touchmove', onTouchMove, { passive: false, capture: true });
     document.addEventListener('touchend', clear, { passive: true, capture: true });
     document.addEventListener('touchcancel', clear, { passive: true, capture: true });
 
@@ -105,9 +103,7 @@
             } else return;
         }
         if (locked && !isHorizontal){
-            try{ active.style.pointerEvents = 'none'; }catch(err){}
-        } else if (locked && isHorizontal){
-            try{ active.style.pointerEvents = 'auto'; }catch(err){}
+            try{ e.stopImmediatePropagation(); }catch(err){}
         }
     }, true);
 

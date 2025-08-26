@@ -1,902 +1,306 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="UTF-8">
-		<title>Sticker Optimizer</title>
-		<meta name="description" content="StickerOptimizer is a powerful tool to calculate the most efficient layout for printing stickers and posters. Save time and reduce material waste in a few simple steps.">
-		<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
-		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-
-		<!-- up to 10% speed up for external res -->
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
-		<link rel="dns-prefetch" href="https://fonts.gstatic.com/">
-		<link rel="preconnect" href="https://fonts.googleapis.com/">
-		<link rel="preconnect" href="https://fonts.gstatic.com/">
-		<!-- preloading icon font is helping to speed up a little bit -->
-		<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
-
-		<link rel="stylesheet" href="assets/css/core.min.css">
-		<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-		<!-- favicon -->
-		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="apple-touch-icon" href="assets/images/StickerOptimizer_logo_Light.png">
-
-	</head>
-
-	<body class="header-scroll-reveal">
-
-		<div id="wrapper">
-
-
-			<!-- Header -->
-			<header id="header" class="container position-relative">
-
-				<div class="mx-3 px-3 mt-4 row-pill position-absolute bg-white rounded left-0 right-0 shadow-xlg">
-
-					<!-- 
-						TOP BAR NOTE
-						add .bg-secondary if #top_bar used
-					-->
-
-
-					<!-- Navbar -->
-					<div class="position-relative">
-
-
-						<nav class="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
-
-							<div class="align-items-start">
-
-								<!-- mobile menu button : show -->
-								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
-									<svg width="25" viewBox="0 0 20 20">
-										<path d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z"></path>
-										<path d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z"></path>
-										<path d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z"></path>
-										<path d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z"></path>
-									</svg>
-								</button>
-
-								<!-- 
-									Logo : height: 70px max
-								-->
-								<a class="navbar-brand" href="index.html">
-									<img src="assets/images/StickerOptimizer_logo_SVG.svg" width="110" height="38" alt="...">
-								</a>
-
-							</div>
-
-
-
-
-							
-							<div class="collapse navbar-collapse navbar-animate-fadein" id="navbarMainNav">
-
-
-								<!-- navbar : mobile menu -->
-								<div class="navbar-xs d-none"><!-- .sticky-top -->
-
-									<!-- mobile menu button : close -->
-									<button class="navbar-toggler pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
-										<svg width="20" viewBox="0 0 20 20">
-											<path d="M 20.7895 0.977 L 19.3752 -0.4364 L 10.081 8.8522 L 0.7869 -0.4364 L -0.6274 0.977 L 8.6668 10.2656 L -0.6274 19.5542 L 0.7869 20.9676 L 10.081 11.679 L 19.3752 20.9676 L 20.7895 19.5542 L 11.4953 10.2656 L 20.7895 0.977 Z"></path>
-										</svg>
-									</button>
-
-									<!-- 
-										Mobile Menu Logo 
-										Logo : height: 70px max
-									-->
-									<a class="navbar-brand" href="index.html">
-										<img src="assets/images/StickerOptimizer_logo_SVG.svg" width="110" height="38" alt="...">
-									</a>
-
-								</div>
-								<!-- /navbar : mobile menu -->
-
-
-
-								<!-- navbar : navigation -->
-								<ul class="navbar-nav">
-
-									<!-- mobile only image + simple search (d-block d-sm-none) -->
-									<li class="nav-item d-block d-sm-none">
-
-										<!-- image -->
-										<div class="mb-4">
-											<img width="600" height="600" class="img-fluid" src="assets/images/demo/people_crossbrowser.svg" alt="...">
-										</div>
-
-										<!-- search -->
-										<form method="get" action="#!search" class="input-group-over mb-4 bg-light p-2 form-control-pill">
-											<input type="text" name="keyword" value="" placeholder="Quick search..." class="form-control border-dashed">
-											<button class="btn btn-sm fi fi-search mx-3"></button>
-										</form>
-
-									</li>
-
-
-									<!-- Hosting -->
-									<li class="nav-item dropdown">
-
-										<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mainNavHosting">
-											Hosting
-										</a>
-
-										<ul class="prefix-link-icon prefix-icon-dot dropdown-menu dropdown-menu-clean dropdown-menu-hover" aria-labelledby="mainNavHosting">
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Web Hosting</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Wordpress Pro Hosting</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Magento Pro Hosting</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">eCart Pro Hosting</a>
-											</li>
-
-										</ul>
-
-									</li>
-
-
-									<!-- Domains -->
-									<li class="nav-item dropdown">
-
-										<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mainNavDomains">
-											Domains
-										</a>
-
-										<ul class="prefix-link-icon prefix-icon-dot dropdown-menu dropdown-menu-clean dropdown-menu-hover" aria-labelledby="mainNavDomains">
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Domain name search</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Domain name transfer</a>
-											</li>
-
-										</ul>
-
-									</li>
-
-
-
-									
-
-
-
-									<!-- Servers -->
-									<li class="nav-item dropdown">
-
-										<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="mainNavServers">
-											Servers
-										</a>
-
-										<ul class="prefix-link-icon prefix-icon-dot dropdown-menu dropdown-menu-clean dropdown-menu-hover" aria-labelledby="mainNavServers">
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Managed VPS with cPanel</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Self Managed</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Bare metal</a>
-											</li>
-
-											<li class="dropdown-item">
-												<a class="dropdown-link" href="#">Colocation</a>
-											</li>
-
-										</ul>
-
-									</li>
-
-									<!-- Contact -->
-									<li class="nav-item">
-
-										<a href="#" class="nav-link">
-											Contact
-										</a>
-
-									</li>
-
-								</ul>
-								</ul>
-								<!-- /navbar : navigation -->
-
-							</div>
-
-
-							<!-- OPTIONS -->
-							<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
-
-								<li class="list-inline-item float-start">
-									<a href="#" class="btn btn-sm btn-primary btn-pill transition-hover-start m-0">
-										
-										<i class="fi fi-users m-0-xs"></i>
-
-										<!-- hide text on mobile, keep the icon (space issue reason) -->
-										<span class="d-none d-lg-inline-block">My Account</span>
-									</a>
-								</li>
-
-							</ul>
-							<!-- /OPTIONS -->
-
-						</nav>
-
-					</div>
-					<!-- /Navbar -->
-
-				</div>
-			</header>
-			<!-- /Header -->
-
-
-			<!-- INTRO -->
-			<div class="section bg-theme-color-light">
-				<div class="container min-vh-50 pt-5"> 
-
-					<div class="row text-center-xs d-middle">
-
-						<!-- note: z-index on columns are because of AOS plugin -->
-						<div class="col-12 col-md-6 order-2 order-md-1 pb-5 z-index-2" data-aos="fade-up" data-aos-delay="0">
-
-							<div class="mb-5 max-w-500">
-								
-								<h1 class="display-4 fw-bold mb-0 mt-6">
-									<span class="text-primary">Sticker</span> Optimizer
-								</h1>
-
-								<p class="h3 fw-medium mb-6">
-									Save your time, reduce material waste, and optimize your printing process
-								</p>
-
-								<p class="fs-6 fw-medium mb-2 px-3">
-									Spend the time you save on a well-deserved cup of coffee.
-								</p>
-
-								<form action="#" method="get">
-
-									<div class="input-group">
-										
-										<input type="email" class="form-control form-control-lg" placeholder="Domain name" aria-label="Domain name">
-
-										<button class="btn btn-lg btn-warning" type="submit">
-											<i class="fi fi-search mx-4"></i>
-										</button>
-
-									</div>
-
-								</form>
-
-							</div>
-
-						</div>
-
-						<div class="col-12 col-md-6 order-1 order-md-2 pb-5 pt-7 z-index-1" data-aos="fade-up" data-aos-delay="200">
-
-							<!-- svg image -->
-							<img width="700" height="477" class="img-fluid" src="assets/images/demo/hosting_mini_rack.png" data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="...">
-
-						</div>
-
-					</div>
-
-				</div>
-			</div>	
-			<!-- /INTRO -->
-
-
-
-
-			<!-- DOMAINS BAR -->
-			<div class="container py-5">
-
-				<div class="row g-4 col-border text-center text-muted">
-					
-					<div class="col-6 col-md-3">
-
-						<h2 class="h5 mb-1">
-							<span class="text-primary fw-bold">.COM</span> <span class="fw-light">domains</span>
-						</h2>
-						<p class="m-0">$12.99 / year</p>
-
-					</div>
-
-
-					<div class="col-6 col-md-3">
-
-						<h2 class="h5 mb-1">
-							<span class="text-primary fw-bold">.ORG</span> <span class="fw-light">domains</span>
-						</h2>
-						<p class="m-0">$7.99 / year</p>
-
-					</div>
-
-
-					<div class="col-6 col-md-3">
-
-						<h2 class="h5 mb-1">
-							<span class="text-primary fw-bold">.NET</span> <span class="fw-light">domains</span>
-						</h2>
-						<p class="m-0">$7.99 / year</p>
-
-					</div>
-
-
-					<div class="col-6 col-md-3">
-
-						<h2 class="h5 mb-1">
-							<span class="text-primary fw-bold">.EU</span> <span class="fw-light">domains</span>
-						</h2>
-						<p class="m-0">$9.99 / year</p>
-
-					</div>
-
-				</div>
-
-			</div>
-			<!-- /DOMAINS BAR -->
-
-
-
-			<!-- block : quick about + dark section -->
-			<div class="bg-light text-center pt-7">
-
-				<div class="container mb-6">
-
-					<h2 class="display-5 fw-bold">Save time</h2>
-
-					<div class="col-sm-10 col-lg-7 mx-auto py-4">
-
-						<p class="lead">
-							A simple and powerful tool designed for graphic designers, print shop owners, and hobbyists. 
-							It helps you calculate the most efficient layout for printing stickers and posters on large-scale printers. 
-							Save time, reduce material waste, and optimize your printing process with a few simple taps.
-							Spend the time you save on a well-deserved cup of coffee.
-						</p>
-
-					</div>
-
-				</div>
-
-				<img data-aos="fade-up" data-aos-delay="200" width="700" height="477" class="img-fluid" src="assets/images/demo/hosting_splash.png" data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="...">
-			</div>
-
-
-			<div class="section pt-7 pb-150 mb-3 bg-gradient-dark text-white">
-				<div class="container">
-
-					<div class="row">
-
-						<div class="col-12 col-lg-4 mb-4 d-flex">
-
-							<div class="flex-none pe-4">
-								<i class="text-success fs-1 fi fi-share"></i>
-							</div>
-
-							<div class="col">
-								<h3 class="h5">
-									<a href="#" class="text-white text-success-hover text-decoration-none">
-										3 types roll <small>host</small>
-									</a>
-								</h3>
-
-								<p class="fs-6 m-0">
-									Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-								</p>
-							</div>
-
-						</div>
-
-
-						<div class="col-12 col-lg-4 mb-4 d-flex">
-
-							<div class="flex-none pe-4">
-								<i class="text-success fs-1 fi fi-cloud-download"></i>
-							</div>
-
-							<div class="col">
-								<h3 class="h5">
-									<a href="#" class="text-white text-success-hover text-decoration-none">
-										Less <small>waste</small>
-									</a>
-								</h3>
-
-								<p class="fs-6 m-0">
-									Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-								</p>
-							</div>
-
-						</div>
-
-
-						<div class="col-12 col-lg-4 mb-4 d-flex">
-
-							<div class="flex-none pe-4">
-								<i class="text-success fs-1 fi fi-database"></i>
-							</div>
-
-							<div class="col">
-								<h3 class="h5">
-									<a href="#" class="text-white text-success-hover text-decoration-none">
-										More <small>free time</small>
-									</a>
-								</h3>
-
-								<p class="fs-6 m-0">
-									Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-								</p>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-			<!-- /block : quick about + dark section -->
-
-
-
-			
-
-
-			<!-- block : services -->
-			<div id="section_about" class="section">
-				<div class="container">
-				
-					<!-- Baremetal -->
-					<div class="row g-xl-5 align-items-center my-7">
-
-						<div class="col-12 col-lg-6 mb-5">
-
-							<h2 class="h1 fw-bold text-primary mb-4">
-								What it does?
-							</h2>
-
-
-							<p class="lead mb-5">
-								Answering those questions and more is a tall order, but one you should approach with enthusiasm. After all, this is the one place you can and should sing your own praises.  This is your opportunity to tell the world why your company is awesome. But you’ll need to do it tactfully, and that’s the tricky part.
-							</p>
-
-							<a href="contact-1.html" class="btn btn-primary btn-pill btn-soft">
-								Take a smile
-							</a>
-
-						</div>
-
-						<div class="col-12 col-lg-6 mb-5">
-
-							<div class="row gutters-md g-2 g-xl-4">
-
-								<div class="col-6 jarallax" data-jarallax-element="-20">
-
-									<div class="bg-white shadow-xs rounded-xl p-4 mb-4 bg-primary-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
-										<i class="fi fi-calendar fs-1"></i>
-										<h3 class="h5 py-3">24/7 Monitoring</h3>
-										<p>
-											Answering those questions and more is a tall order, but one you should approach with enthusiasm.
-										</p>
-									</div>
-
-								</div>
-
-								<div class="col-6 jarallax" data-jarallax-element="30">
-
-									<div class="bg-white shadow-xs rounded-xl p-4 mb-4 bg-success-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
-										<i class="fi fi-database fs-1"></i>
-										<h3 class="h5 py-3">NAS Backup</h3>
-										<p>
-											Answering those questions and more is a tall order, but one you should approach with enthusiasm.
-										</p>
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-					<!-- Baremetal -->
-
-
-					<!-- Cloud Hosting -->
-					<div class="row g-xl-5 align-items-center my-7">
-
-						<div class="order-lg-2 col-12 col-lg-6 mb-5">
-
-							<h2 class="h1 fw-bold text-success mb-4">
-								Why it does?
-							</h2>
-
-							<p class="lead mb-5">
-								Answering those questions and more is a tall order, but one you should approach with enthusiasm. After all, this is the one place you can and should sing your own praises.  This is your opportunity to tell the world why your company is awesome. But you’ll need to do it tactfully, and that’s the tricky part.
-							</p>
-
-							<a href="contact-1.html" class="btn btn-success btn-pill btn-soft">
-								Take a smile
-							</a>
-
-						</div>
-
-						<div class="order-lg-1 col-12 col-lg-6 mb-5">
-
-							<div class="row gutters-md g-2 g-xl-4">
-
-								<div class="col-6 jarallax" data-jarallax-element="-20">
-
-									<div class="bg-white shadow-xs rounded-xl p-4 mb-4 bg-primary-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
-										<i class="fi fi-support fs-1"></i>
-										<h3 class="h5 py-3">24/7 Support</h3>
-										<p>
-											Answering those questions and more is a tall order, but one you should approach with enthusiasm.
-										</p>
-									</div>
-
-								</div>
-
-								<div class="col-6 jarallax" data-jarallax-element="30">
-
-									<div class="bg-white shadow-xs rounded-xl p-4 mb-4 bg-success-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
-										<i class="fi fi-cog fs-1"></i>
-										<h3 class="h5 py-3">Free Setup</h3>
-										<p>
-											Answering those questions and more is a tall order, but one you should approach with enthusiasm.
-										</p>
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-					<!-- Cloud Hosting -->
-
-
-					
-
-				</div>
-			</div>
-			<!-- /block : services -->
-
-
-
-
-      <!-- block : contact -->
-      <div id="section_contact" class="section mt-1 bg-light">
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-12 col-lg-6 mb-5">
-
-              <h2 class="fw-bold mb-0">Contact us</h2>
-              <p class="fw-medium mb-5">Let us know how can we help you!</p>
-
-              <div class="row">
-
-                <!-- call us -->
-                <div class="col-12 col-sm-6 mb-4">
-                  
-                  <h3 class="fw-medium text-primary h5 mb-4">
-                    Call Us
-                  </h3>
-
-                  <p class="m-0">
-                    <a href="tel:01555-88978" class="link-muted">+01 785-388-9450</a>
-                  </p>
-                  <p class="m-0">
-                    <a href="email:john.doe@gmail.com" class="link-muted">john.doe@gmail.com</a>
-                  </p>
-
+    <head>
+        <meta charset="UTF-8">
+        <title>Sticker Optimizer</title>
+        <meta name="description" content="StickerOptimizer: powerful tool for printing stickers and posters. Calculate the most efficient layout, save time, and reduce material waste">
+        <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+        <link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="assets/css/core.min.css">
+        <link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="demo.files/logo/icon_512x512.png">
+    </head>
+
+    <body class=header-scroll-reveal>
+        <div id="wrapper">
+            <header id="header" class="shadow-xs">
+                <div class="container position-relative">
+                    <nav class="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
+                        <div class="align-items-start">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <svg width="25" viewBox="0 0 20 20">
+                                    <path d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z"></path>
+                                    <path d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z"></path>
+                                    <path d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z"></path>
+                                    <path d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z"></path>
+                                </svg>
+                            </button>
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/images/StickerOptimizer_logo_gray.svg" width="110" height="38" alt="...">
+                            </a>
+                        </div>                      
+                        <div class="collapse navbar-collapse navbar-animate-fadein" id="navbarMainNav">
+                            <div class="navbar-xs d-none"><button class="navbar-toggler pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <svg width="20" viewBox="0 0 20 20">
+                                        <path d="M 20.7895 0.977 L 19.3752 -0.4364 L 10.081 8.8522 L 0.7869 -0.4364 L -0.6274 0.977 L 8.6668 10.2656 L -0.6274 19.5542 L 0.7869 20.9676 L 10.081 11.679 L 19.3752 20.9676 L 20.7895 19.5542 L 11.4953 10.2656 L 20.7895 0.977 Z"></path>
+                                    </svg>
+                                </button>
+                                <a class="navbar-brand" href="index.html">
+                                    <img src="assets/images/StickerOptimizer_logo_light.png" width="110" height="38" alt="...">
+                                </a>
+                            </div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#section_about">Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#why_it_is_created">Why it is created?</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#stop_wasting_time">Benefits</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#footer">Contact</a>
+                                </li>
+                                <li class="nav-item d-block d-sm-none">
+                                    <a target="_blank" href="#buy_now" class="btn w-100 btn-primary shadow-none text-white m-0">
+                                        Get Sticker Optimizer
+                                    </a>
+                                </li>
+                            </ul>
+                            </div>
+                    </nav>
                 </div>
-
-                <!-- address -->
-                <div class="col-12 col-sm-6 mb-4">
-
-                  <h3 class="fw-medium text-primary h5 mb-4">
-                    Our Address
-                  </h3>
-
-                  <p class="m-0">
-                    Road 741, No.44, New York <br>
-                    United States
-                  </p>
-
+                </header>
+            <div class="section py-5">
+                <div class="container min-vh-50 d-middle pt-5"> 
+                    <div class="row text-center-xs">
+                        <div class="col-12 col-md-6 pb-3" data-aos="fade-in" data-aos-delay="200">
+                            <img  height="800" class="img-fluid rounded-xl" src="assets/images/iphone/jpg/cover.jpg" alt="...">
+                            <div class="absolute-full w-100 overflow-hidden opacity-6">
+                                <img class="img-fluid" width="1000" height="1000" src="assets/images/masks/shape-line-lense.svg" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 d-middle">          
+                            <div class="mx-3 my-4" data-aos="fade-in" data-aos-delay="300">                             
+                                <div class="bg-light p-4 rounded-xl">
+                                    <i class="arrow arrow-lg arrow-top arrow-center border-light d-block d-md-none"></i>
+                                    <i class="arrow arrow-lg arrow-start mt-3 border-light d-none d-md-inline-block d-lg-inline-block d-xl-inline-block"></i>                                   
+                                    <h1 class="display-4 fw-bold mb-3 mt-6">
+                                        <span class="text-primary">Sticker</span> Optimizer
+                                    </h1>
+                                    <p class="h3 fw-light mb-6 max-w-600">
+                                    Save your Time, Reduce material waste and Optimize your printing process.
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-
-
-              <div class="bg-white shadow-primary-xs rounded p-2 mt-5">
-
-                <!--
-                  Map
-                -->
-                <div class="map-leaflet w-100 rounded" style="height:400px" 
-                  data-map-tile="voyager" 
-                  data-map-zoom="8" 
-                  data-map-json='[
-                    { 
-                      "map_lat": 40.750765,
-                      "map_long": -73.993428,
-                      "map_popup": "<b>Smarty Inc.</b> <br> Road 741, No.44,<br> New York / United States <br> <a href=`tel:7853889450`>(01)-785-388-9450</a>"
-                    }
-                  ]'><!-- map container--></div>
-
-              </div>
-
+            </div>  
+            <div id="section_about" class="section">
+                <div class="container">
+                    <div class="row g-xl-5 align-items-center my-7">
+                        <div class="col-12 col-lg-6 mb-5">
+                            <h1 class="display-4 fw-bold mb-3 mt-6">
+                                What <span class="text-primary">it does?</span>
+                            </h1>
+                            <p class="h3 fw-light mb-6 max-w-600">
+                                A simple and powerful tool designed for graphic designers, print shop owners, and hobbyists.
+                                <span class="text-primary">It helps you calculate the most efficient layout</span> for printing stickers and posters on large-scale printers.                               
+                            </p>                            
+                        </div>
+                        <div class="col-12 col-lg-6 mb-5">
+                            <div class="row gutters-md g-2 g-xl-4">
+                                <div class="col-6 jarallax" data-jarallax-element="-20">
+                                    <div class="lead bg-white shadow-xs rounded-xl p-4 mb-4 bg-primary-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
+                                        <i class="fi fi-calendar fs-1"></i>
+                                        <h3 class="py-3 fw-light">Offline mode</h3>
+                                        <p class="fw-light">
+                                            Anywhere, anytime. It works! 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-6 jarallax" data-jarallax-element="30">
+                                    <div class=" lead bg-white shadow-xs rounded-xl p-4 mb-4 bg-success-soft-hover transition-bg-ease-150 text-decoration-none text-gray-800">
+                                        <i class="fi fi-database fs-1"></i>
+                                        <h3 class="py-3 fw-light">3 Roll sizes</h3>
+                                        <p class="fw-light">
+                                            For large-scale printers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="col-12 col-lg-6">
-
-              <div class="rounded bg-white shadow-xs d-flex">
-                <div class="m-5 m-4-xs">
-
-                  <h2 class="mb-4">
-                    Send us a message
-                  </h2>
-
-
-                  <!-- 
-                    CONTACT FORM : AJAX [TESTED|WORKING AS IT IS]
-
-                      Plugin required: SOW Ajax Forms
-
-                      In order to work as ajax form, SOW Ajax Forms should be available/enabled
-                      Else, SOW Form Validation plugin is used.
-                      If none of them are available, normal submit is used and you can remove:
-                        .js-ajax
-                        .bs-validate
-                        novalidate
-                        any data-ajax-*
-                        any data-error-*
-
-                      ** Remove data-error-toast-* for no error toast notifications
-
-
-
-
-                    Ajax will control success/fail alerts according to server response:
-                      
-                      1. unexpected error:    if server response is this string: {:err:unexpected:}
-                      2. mising mandatory:    if server response is this string: {:err:required:}
-                      3. success:         if server response is this string: {:success:}
-                      
-                      data-ajax-control-alerts="true"
-                      data-ajax-control-alert-succes="#contactSuccess" 
-                      data-ajax-control-alert-unexpected="#contactErrorUnexpected" 
-                      data-ajax-control-alert-mandaroty="#contactErrorMandatory" 
-
-                    +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                      WORKING CONTACT! Edit your php/config.inc.php
-                    +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                  -->
-                  <form   novalidate 
-                      action="php/contact_form.php" 
-                      method="POST" 
-
-                      data-ajax-container="#ajax_dd_contact_response_container" 
-                      data-ajax-update-url="false" 
-                      data-ajax-show-loading-icon="true" 
-                      data-ajax-callback-function="" 
-                      data-error-scroll-up="false" 
-                      
-                      data-ajax-control-alerts="true"
-                      data-ajax-control-alert-succes="#contactSuccess" 
-                      data-ajax-control-alert-unexpected="#contactErrorUnexpected" 
-                      data-ajax-control-alert-mandaroty="#contactErrorMandatory" 
-
-                      data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Please, complete all required fields!" 
-                      data-error-toast-delay="2000" 
-                      data-error-toast-position="bottom-center"
-
-                      class="bs-validate js-ajax">
-
-
-                    <!-- 1. 
-                      optional, hidden action for your backend
-
-                      PHP Basic Example
-                      if($_POST['action'] == 'contact_form_submit') {
-                        ... send message
-                      }
-                    -->
-                    <input type="hidden" name="action" value="contact_form_submit" tabindex="-1"> 
-                    <!-- -->
-
-
-                    <!-- 2. 
-                      A very small optional trick (using .hide class instead of type="hidden") for some low spam robots. 
-                      If this is not empty, the process should stop. A normal user/visitor should not be able to see this field.
-
-                      PHP Basic Example
-                      if($_POST['norobot'] != '') {
-                        exit;
-                      }
-                    -->
-                    <input type="text" name="norobot" value="" class="hide" tabindex="-1"> 
-                    <!-- -->
-
-                    <div class="form-floating mb-3">
-                      <input required placeholder="Name" id="contact_name" name="contact_name" type="text" class="form-control">
-                      <label for="contact_name">Name</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                      <input required placeholder="Email" id="contact_email" name="contact_email" type="email" class="form-control">
-                      <label for="contact_email">Email</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                      <input required placeholder="Phone" id="contact_phone" name="contact_phone" type="text" class="form-control">
-                      <label for="contact_phone">Phone</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                      <textarea required placeholder="Message" id="contact_message" name="contact_message" class="form-control" rows="3" style="min-height:120px"></textarea>
-                      <label for="contact_message">Message</label>
-                    </div>
-
-                    <!-- GDPR CONSENT -->
-                    <div class="mb-3 border p-3 rounded">
-
-                      <p class="small mb-3 pb-3 border-bottom">
-                        I consent that my personal data is stored according to <span class="fw-medium">2016/679/UE (UE GDPR)</span>. 
-                      </p>
-
-			                <div class="form-check">
-			                  <input required class="form-check-input" id="contact_gdpr" name="contact_gdpr" type="checkbox" value="1">
-			                  <label class="form-check-label" for="contact_gdpr">
-			                    I do accept Smarty <a class="text-decoration-none" href="shop-page-terms.html" target="_blank">terms & conditions</a>.
-			                  </label>
-			                </div>
-
-                    </div>
-                    <!-- /GDPR CONSENT -->
-
-
-
-
-                    <!-- 
-                      Server detailed error
-                      !ONLY! If debug is enabled!
-                      Else, shown ony "Server Error!"
-                    -->
-                    <div id="ajax_dd_contact_response_container"></div>
-
-                    <!-- {:err:unexpected:} internal server error -->
-                    <div id="contactErrorUnexpected" class="hide alert alert-danger p-3">
-                      Unexpected Error!
-                    </div>
-
-                    <!-- {:err:required:} mandatory fields -->
-                    <div id="contactErrorMandatory" class="hide alert alert-danger p-3">
-                      Please, review your data and try again!
-                    </div>
-
-                    <!-- {:success:} message sent -->
-                    <div id="contactSuccess" class="hide alert alert-success p-3">
-                      Thank you for your message!
-                    </div>
-
-
-
-
-                    <button type="submit" class="btn btn-lg btn-primary w-100">
-                      Send Message
-                    </button>
-
-                  </form>
-                  <!-- /CONTACT FORM : AJAX -->
-
-
+            <div class="section position-relative jarallax overlay-dark overlay-opacity-7 text-white bg-cover" style="background-image:url('assets/images/iphone/jpg/sticker_optimizer_su_Iphone_2560_1600_4.jpg')">
+                <div class="container py-7 text-center position-relative z-index-2">                
+                    <blockquote class="blockquote text-center" data-aos="fade-in" data-aos-delay="250" data-aos-offset="0">
+                        <h2 class="h1 max-w-800 m-auto fw-light">
+                        Optimize your layouts in seconds for your printing process with a few simple taps.
+                        </h2>
+                        <footer class="blockquote-footer mt-4 fs-5 fw-light text-gray-500">
+                        <cite title="Source Title">And don't forget a smile</cite>
+                        </footer>
+                    </blockquote>
+                </div>          
+                <div class="absolute-full w-100 overflow-hidden opacity-5">
+                <img class="img-fluid" width="2000" height="2000" src="assets/images/masks/shape-line-lense.svg" alt="...">
                 </div>
-              </div>
-
+             </div>
+            <div id="why_it_is_created" class="section overflow-hidden">
+                <div class="container">             
+                    <div class="row align-items-center">                    
+                        <div class="order-2 order-md-1 col-12 col-md-6">                            
+                            <h1 class="display-4 fw-bold mb-3 mt-6">
+                                Why <span class="text-primary">it is </span>created?
+                            </h1>
+                            <p class="h3 fw-light mb-6 max-w-600">
+                                Having seen print managers waste time on manual calculations, I developed a tool to automate the process. 
+                                <span class="text-primary">Sticker Optimizer uses a special formula</span> to find the optimal roll size and layout, 
+                                significantly reducing material waste and enabling them to <span class="text-primary">offer the best price.</span>      
+                            </p>                                                                                        
+                        </div>
+                        <div class="order-1 order-md-2 col-12 col-md-6 mb-5">                           
+                            <div class="stretch-end py-5 rounded-xl bg-light bg-cover lazy" 
+                                data-background-image="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_13.jpg">
+                                <img class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAKCAQAAADxnt1TAAAAEUlEQVR42mNkIBowjiodaKUACusAC4zze1kAAAAASUVORK5CYII=" alt="...">
+                            </div>      
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="section">
+                <div class="container">
+                <div class="text-center col-lg-7 mx-auto mb-5">
+                    <h2 class="mb-5 display-5 fw-bold">
+                    <span class="text-danger-gradient mb-3">Get The Most</span>
+                    <span class="d-block fs-2">Out Of Sticker Optimizer</span>
+                    </h2>
+                    <p class="h3 fw-light mb-6">In seconds, optimize your layouts and reduce material waste for a better price.</p>
+                </div>
+                    <figure class="cocoen rounded">
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19big.jpg" alt="...">
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22big.jpg" alt="...">
+                    </figure>           
+                </div>
+            </div>
+            <div id="stop_wasting_time" class="section pt-5 p-0 mt-1 bg-light">
+                <div class="text-center col-lg-7 mx-auto mb-5">
+                    <h2 class="mb-5 display-5 fw-bold">
+                        <span class="text-danger-gradient mb-3">Stop Wasting Time</span>
+                        <span class="d-block fs-2">on Manual Calculations</span>
+                    </h2>
+                    <h4 class="h5 fw-light mb-2">Manual calculation: <span class="fw-bold">~ 3-5 minutes</span></h4>
+                    <h4 class="h5 fw-light mb-6">Our formula: <span class="fw-bold">Just 1 second</span></h4>
+                    <p class="h3 fw-light mb-6">Here is what you save by performing just 10 calculations a day:</p>
+                </div>
+                <div class="container">
+                    <div class="row col-border text-center">
+                        <div class="col-6 col-md-3 mb-5">
+                            <div class="h1">
+                                <span data-toggle="count" data-count-from="0" data-count-to="50" data-count-duration="2500" data-count-decimals="0">0</span>
+                                <span class="text-muted fw-light"> min.</span>
+                            </div>
+                            <h3 class="h6 m-0">Saved Daily</h3>
+                        </div>
+                        <div class="col-6 col-md-3 mb-5">
+                            <div class="h1">
+                                <span data-toggle="count" data-count-from="0" data-count-to="18" data-count-duration="2500" data-count-decimals="0">0</span><span class="text-muted fw-light">+ hours</span>
+                            </div>
+                            <h3 class="h6 m-0">Saved Monthly</h3>
+                        </div>
+                        <div class="col-6 col-md-3 mb-5">
+                            <div class="h1">
+                                <span data-toggle="count" data-count-from="0" data-count-to="220" data-count-duration="2500" data-count-decimals="0">0</span><span class="text-muted fw-light">+ hours</span>
+                            </div>
+                            <h3 class="h6 m-0">Saved Annually</h3>
+                        </div>
+                        <div class="col-6 col-md-3 mb-5">
+                            <div class="h1">
+                                <span data-toggle="count" data-count-from="0" data-count-to="28" data-count-duration="2500" data-count-decimals="0">0</span><span class="text-muted fw-light">+ days</span>
+                            </div>
+                            <h3 class="h6 m-0">That's Almost a Full Month!</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container"> 
+                    <div class="card shadow-xs overflow-hidden border-0 mt-5 border-bottom border-3">
+                        <div class="row g-0">                       
+                            <div class="col-12 col-lg-5 jarallax overlay-dark overlay-opacity-0 text-white py-7 bg-cover" 
+                                data-speed="1.2" 
+                                style="background-image:url('assets/images/coffe.jpg')">
+                                <div class="absolute-full w-100 overflow-hidden">
+                                    <img class="img-fluid" width="2000" height="2000" src="assets/images/masks/shape-line-lense.svg" alt="...">
+                                </div>                              
+                            </div>
+                            <div class="col-12 col-lg-7 p-5">
+                                <div class="card-body d-table h-100">
+                                    <div class="d-table-cell align-middle">
+                                        
+                                        <blockquote class="blockquote mb-4 pt-4 text-center mx-auto col-lg-10 fw-light">
+                                            <p class="fs-4">Use the time you've saved for a delicious cup of coffee!</p>
+                                            <footer class="blockquote-footer">
+                                                Marius
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
 
-          </div>
-
-        </div>
-      </div>
-      <!-- /block : contact -->
-
-							
-
-
-
-			<!-- Footer -->
-			<footer id="footer" class="footer-dark">
-
-				<!-- expandable : hidden by default -->
-				<div id="footer_expand" class="collapse">
-					<div class="container py-5">
-
-						<ul class="mt-3 mb-0 breadcrumb bg-transparent p-0 block-xs"> 
-							<li class="breadcrumb-item"><a href="contact-1.html">Contact</a></li> 
-							<li class="breadcrumb-item"><a href="about-us-1.html">About Us</a></li> 
-							<li class="breadcrumb-item"><a href="page-terms-and-conditions.html">Terms &amp; Conditions</a></li> 
-							<li class="breadcrumb-item"><a href="page-cookie.html">GDPR &amp; Cookies</a></li> 
-						</ul>
-
-						<div class="text-muted mt-3">
-							<p>
-								Frontend? Admin? What if you don't need anymore to learn and work with two different templates on your projects? 
-								<b>What would you do if time really matter?</b> Both: frontend and admin uses exactly the same core and all elements can be used in both sides because... actually there are no such thing "two sides" with Smarty!
-							</p>
-						</div>
-
-					</div>
-				</div>
-				<!-- /expandable : hidden by default -->
-
-
-				<div class="bg-distinct py-3 clearfix">
-
-					<div class="container clearfix fw-light text-center-xs position-relative">
-
-
-						<div class="clearfix float-start float-none-xs">
-
-							<!-- badge expand info -->
-							<span id="footer_expand_badge" class="badge bg-secondary rounded-pill p-2 position-absolute start-0 mt-n5 mx-2 position-relative small fw-normal">
-								<i class="arrow arrow-bottom border-secondary mx-1 mb-2"></i>
-								click to expand
-							</span>
-
-
-							<!-- footer expand toggler -->
-							<a href="#footer_expand" 
-								data-toggle-target="#footer_expand_badge" 
-								data-toggle-container-class="hide-force" 
-								data-offset="-100%" 
-								data-speed="600" 
-								class="scroll-to btn-toggle btn float-start overlay-dark overlay-opacity-2 overflow-hidden text-decoration-none px-3 rounded mt-n2 mb-n2" data-bs-toggle="collapse" rel="noopener" aria-expanded="false">
-								
-								<span class="group-icon">
-									<i class="fi fi-menu-dots fs-4"></i>
-									<i class="fi fi-close fs-4"></i>
-								</span>
-
-							</a>
-
-							<!-- copyright -->
-							<div class="fs-6 py-2 float-start float-none-xs m-0-xs">
-								&copy; 2019 UAB Semka
-							</div>
-
-							<div class="clearfix mt-2 d-block d-sm-none"><!-- mobile spacer --></div>
-						</div>
-
-					</div>
-
-				</div>
-
-			</footer>
-			<!-- /Footer -->
-
-		</div><!-- /#wrapper -->
-
-		<script src="assets/js/core.min.js"></script>
-
-	</body>
+            <footer id="footer" class="bg-gray-900 text-white">         
+                <hr class="bg-gray-500 my-0 container">             
+                <div class="container py-5">
+                    <div class="row g-4">                       
+                        <div class="col-12 col-lg-4 mb-4">
+                        <div class="my-4"><p class="small mb-0">&copy; 2019 UAB Semka</p>
+                                <p class="small mb-0">All rights reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-4">
+                            <h3 class="small mb-4">GET IN TOUCH</h3>
+                            
+                            <div class="small d-flex align-items-start my-3">
+                            <svg class="me-3 flex-none my-1" height="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <ul class="list-unstyled p-0 m-0 w-100">
+                                <li>Visoriu str. 6, Vilnius</li>
+                                <li>Lithuania, LT-08300</li>
+                            </ul>
+                            </div>
+                            <div class="small d-flex align-items-start my-3">
+                            <svg class="me-3 flex-none my-1" height="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">  
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                            </svg>
+                            <ul class="list-unstyled p-0 m-0 w-100">
+                                <li>Phone: <a href="tel:18005652390" class="text-white text-dashed">+370 (603) 88 799</a></li>
+                                <li>Email: <a href="mailto:myemail@gmail.com" class="text-white text-dashed">ccholio@gmail.com</a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-4">
+                            <h3 class="small mb-4">LEARN MORE</h3>
+                            <ul class="list-unstyled">                                 
+                                <li class="list-item mb-2">
+                                    <i class="fi fi-arrow-end me-2 smaller"></i>
+                                    <a class="text-gray-400" href="privacy.html">Privacy Policy</a>
+                                </li>                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            </div>
+        <script src="assets/js/core.min.js"></script>
+        
+    </body>
 </html>

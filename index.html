@@ -23,6 +23,18 @@
                 }
             }
         </style>
+        <style>
+            @media (max-width: 768px) {
+                .cocoen {
+                    width: 100%;
+                    margin: 0;
+                }
+                .cocoen img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        </style>
     </head>
 
     <body class=header-scroll-reveal>
@@ -87,7 +99,7 @@
             </div>  
             <div id="section_about" class="section">
                 <div class="container">
-                    <div class="row g-xl-5 align-items-center my-7">
+                    <div class="row g-xl-5 align-items-center my-3 my-lg-7">
                         <div class="col-12 col-lg-6 mb-5">
                             <h1 class="display-4 fw-bold mb-3 mt-6">
                                 What <span class="text-primary">it does?</span>
@@ -151,26 +163,35 @@
                             </p>                                                                                        
                         </div>
                         <div class="order-1 order-md-2 col-12 col-md-6 mb-5">                           
-                            <div class="stretch-end py-5 rounded-xl bg-light bg-cover lazy" 
-                                data-background-image="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_13.jpg">
-                                <img class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAKCAQAAADxnt1TAAAAEUlEQVR42mNkIBowjiodaKUACusAC4zze1kAAAAASUVORK5CYII=" alt="...">
-                            </div>      
+                            <div class="d-none d-lg-block desktop-image-container">
+                                <div class="stretch-end py-5 rounded-xl bg-light bg-cover lazy" 
+                                    data-background-image="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_13.jpg">
+                                    <img class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAKCAQAAADxnt1TAAAAEUlEQVR42mNkIBowjiodaKUACusAC4zze1kAAAAASUVORK5CYII=" alt="...">
+                                </div>      
+                            </div>
+                            <div class="d-lg-none mobile-image-container">
+                                <img class="img-fluid rounded-xl" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_13crop.jpg" alt="Sticker Optimizer on iPhone">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="section">
                 <div class="container">
-                <div class="text-center col-lg-7 mx-auto mb-5">
-                    <h2 class="mb-5 display-5 fw-bold">
-                    <span class="text-danger-gradient mb-3">Get The Most</span>
-                    <span class="d-block fs-2">Out Of Sticker Optimizer</span>
-                    </h2>
-                    <p class="h3 fw-light mb-6">In seconds, optimize your layouts and reduce material waste for a better price.</p>
-                </div>
+                    <div class="text-center col-lg-7 mx-auto mb-5">
+                        <h2 class="mb-5 display-5 fw-bold">
+                            <span class="text-danger-gradient mb-3">Get The Most</span>
+                            <span class="d-block fs-2">Out Of Sticker Optimizer</span>
+                        </h2>
+                        <p class="h3 fw-light mb-6">In seconds, optimize your layouts and reduce material waste for a better price.</p>
+                    </div>
                     <figure class="cocoen rounded">
-                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19big.jpg" alt="...">
-                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22big.jpg" alt="...">
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19big.jpg"
+                            data-mobile-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_19bigcrop.jpg"
+                            alt="...">
+                        <img class="img-fluid" src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22big.jpg"
+                            data-mobile-src="assets/images/iphone/jpg/sticker_optimizer_Iphone_2560_1600_22bigcrop.jpg"
+                            alt="...">
                     </figure>           
                 </div>
             </div>
@@ -289,6 +310,33 @@
             </footer>
             </div>
         <script src="assets/js/core.min.js"></script>
+        <script>
+            function switchImagesForMobile() {
+                const images = document.querySelectorAll('figure.cocoen img[data-mobile-src]');
+                const isMobile = window.innerWidth <= 768;
+
+                images.forEach(img => {
+                    const mobileSrc = img.getAttribute('data-mobile-src');
+                    const originalSrc = img.getAttribute('src');
+
+                    if (isMobile && mobileSrc) {
+                        if (img.src !== mobileSrc) {
+                            img.setAttribute('data-original-src', originalSrc);
+                            img.src = mobileSrc;
+                        }
+                    } else if (!isMobile && img.hasAttribute('data-original-src')) {
+                        img.src = img.getAttribute('data-original-src');
+                        img.removeAttribute('data-original-src');
+                    }
+                });
+            }
+
+            // Paleidžiame funkciją, kai puslapis užkraunamas
+            window.addEventListener('load', switchImagesForMobile);
+
+            // Paleidžiame funkciją, kai keičiamas lango dydis
+            window.addEventListener('resize', switchImagesForMobile);
+        </script>
         
     </body>
 </html>

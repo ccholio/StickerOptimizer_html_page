@@ -344,59 +344,20 @@
                         </h2>
                         <p class="h3 fw-light mb-6">In seconds, optimize your layouts and reduce material waste for a better price.</p>
                     </div>
-                    <figure class="cocoen rounded">
-                        <img class="img-fluid" 
-                            style="width: 100%; max-width: 1400px; height: auto;"
-                            data-mobile-src="assets/images/iphone/sticker_optimizer_iphone_19.jpg"
-                            data-desktop-src="assets/images/iphone/iphone_roll_imposition_black.jpg"
-                            loading="lazy"
-                            alt="Manual sticker layout vs automated sheet imposition comparison">
-                        <img class="img-fluid" 
-                            style="width: 100%; max-width: 1400px; height: auto;" 
-                            data-mobile-src="assets/images/iphone/sticker_optimizer_iphone_22.jpg"
-                            data-desktop-src="assets/images/iphone/iphone_roll_imposition_white.jpg"
-                            loading="lazy"
-                            alt="Sticker Optimizer sheet imposition result with minimum waste">
-                    </figure>           
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <img class="img-fluid rounded w-100"
+                                src="assets/images/iphone/sticker_optimizer_iphone_19.jpg"
+                                loading="lazy" alt="Sticker layout before optimization">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <img class="img-fluid rounded w-100"
+                                src="assets/images/iphone/sticker_optimizer_iphone_22.jpg"
+                                loading="lazy" alt="Sticker layout after optimization">
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <noscript>
-                <div class="row g-3">
-                    <div class="col-12 col-md-6">
-                        <img class="img-fluid" src="assets/images/iphone/sticker_optimizer_iphone_19.jpg"
-                            loading="lazy" alt="Sticker layout before optimization">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <img class="img-fluid" src="assets/images/iphone/sticker_optimizer_iphone_22.jpg"
-                            loading="lazy" alt="Sticker layout after optimization">
-                    </div>
-                </div>
-            </noscript>
-
-            <script>
-                const comparisonImages = document.querySelectorAll(
-                    'figure.cocoen img[data-mobile-src][data-desktop-src]'
-                );
-                const desktopViewport = window.matchMedia('(min-width: 769px)');
-
-                function updateComparisonImages() {
-                    const sourceAttribute = desktopViewport.matches
-                        ? 'data-desktop-src'
-                        : 'data-mobile-src';
-
-                    comparisonImages.forEach(image => {
-                        image.src = image.getAttribute(sourceAttribute);
-                    });
-                }
-
-                updateComparisonImages();
-                if (desktopViewport.addEventListener) {
-                    desktopViewport.addEventListener('change', updateComparisonImages);
-                } else {
-                    desktopViewport.addListener(updateComparisonImages);
-                }
-            </script>
             <!--/Slide -->
 
 
@@ -443,26 +404,6 @@
             </div>
             <!--/Stop Wasting -->
 
-            <!-- Screenshots 
-			<div id="Screenshots" class="section bg-light">
-				<div class="container text-center">
-					<h2 class="fw-bold mb-5">
-						Sticker Optimizer in work
-						<small class="d-block h6 lead"> We think about that, Time, not money, is true wealth....</small>
-					</h2>
-					<div class="row gutters-sm g-2 g-xl-4">
-
-						<div class="order-1 col-12 col-lg-12 mb-3 mb-2-xs text-center">
-							<div class="ratio ratio-16x9">
-                                
-
-                            </div>                                                  
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			 Screenshots -->
 
             <div class="section">
                 <div class="container"> 
@@ -606,7 +547,6 @@
             </footer>
             </div>
 
-        <script src="assets/js/cocoen-guard.js"></script>
         <script src="assets/js/core.min.js"></script>
     
     </body>

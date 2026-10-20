@@ -1,3 +1,3 @@
-Copyright (c) 2025 [Marius Girutis / ccholio@gmail.com
+Copyright (c) 202š [Marius Girutis / marius@semka.lt
 StickerOptimiser App belongs to Marius Girutis.
 All Rights Reserved.  

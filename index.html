@@ -427,9 +427,28 @@
                 <div class="container"> 
                     <div class="card shadow-xs overflow-hidden border-0 mt-5 border-bottom border-3">
                         <div class="row g-0">                       
-                            <div class="col-12 col-lg-5 jarallax coffee-image overlay-dark overlay-opacity-0 text-white py-7 bg-cover"
-                                data-speed="0.5"
+                            <!-- Desktop: parallax veikia -->
+                            <div class="col-12 col-lg-5 jarallax overlay-dark overlay-opacity-0 text-white py-7 bg-cover d-none d-lg-block"
+                                data-speed="1.2"
                                 style="background-image:url('assets/images/coffe.jpg')">
+
+                                <div class="absolute-full w-100 overflow-hidden">
+                                    <img class="img-fluid" width="2000" height="2000"
+                                        src="assets/images/masks/shape-line-lense.svg"
+                                        loading="lazy" alt="">
+                                </div>
+                            </div>
+
+                            <!-- Mobile: statinė nuotrauka -->
+                            <div class="col-12 d-lg-none overlay-dark overlay-opacity-0 text-white py-7 bg-cover"
+                                style="background-image:url('assets/images/coffe.jpg'); background-position:center center;">
+
+                                <div class="absolute-full w-100 overflow-hidden">
+                                    <img class="img-fluid" width="2000" height="2000"
+                                        src="assets/images/masks/shape-line-lense.svg"
+                                        loading="lazy" alt="">
+                                </div>
+                            </div>
                                 <div class="absolute-full w-100 overflow-hidden">
                                     <img class="img-fluid" width="2000" height="2000" src="assets/images/masks/shape-line-lense.svg" loading="lazy" alt="">
                                 </div>                              

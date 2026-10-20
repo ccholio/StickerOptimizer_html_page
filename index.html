@@ -469,7 +469,38 @@
     <script src="assets/js/cocoen-guard.js"></script>
     <script src="assets/js/core.min.js"></script>
     
+<script>
+            function switchImagesForMobile() {
+                // Toggle between cropped default images (mobile) and large desktop images stored in data-desktop-src
+                const images = document.querySelectorAll('figure.cocoen img[data-desktop-src]');
+                const isDesktop = window.innerWidth >= 769;
 
+                images.forEach(img => {
+                    const desktopSrc = img.getAttribute('data-desktop-src');
+                    const currentSrc = img.getAttribute('src');
+
+                    if (isDesktop && desktopSrc) {
+                        if (currentSrc !== desktopSrc) {
+                            img.setAttribute('data-mobile-src', currentSrc); // save cropped mobile src
+                            img.src = desktopSrc;
+                        }
+                    } else if (!isDesktop && img.hasAttribute('data-mobile-src')) {
+                        const mobileSrc = img.getAttribute('data-mobile-src');
+                        if (currentSrc !== mobileSrc) {
+                            img.src = mobileSrc;
+                        }
+                    }
+                });
+            }
+
+            // Paleidžiame funkciją, kai puslapis užkraunamas
+            window.addEventListener('load', switchImagesForMobile);
+
+            // Paleidžiame funkciją, kai keičiamas lango dydis
+            window.addEventListener('resize', switchImagesForMobile);
+
+            
+        </script>
 
         
     </body>

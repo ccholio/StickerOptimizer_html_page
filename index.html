@@ -469,31 +469,7 @@
     <script src="assets/js/cocoen-guard.js"></script>
     <script src="assets/js/core.min.js"></script>
     
-<script>
-    function switchImagesForMobile() {
-        const images = document.querySelectorAll('figure.cocoen img[data-desktop-src]');
-        const isDesktop = window.innerWidth >= 769;
 
-        images.forEach(img => {
-            const desktopSrc = img.getAttribute('data-desktop-src');
-
-            // Originalų mobile paveikslėlį išsaugome tik vieną kartą
-            if (!img.hasAttribute('data-mobile-src')) {
-                img.setAttribute('data-mobile-src', img.getAttribute('src'));
-            }
-
-            const mobileSrc = img.getAttribute('data-mobile-src');
-            const targetSrc = isDesktop ? desktopSrc : mobileSrc;
-
-            if (img.getAttribute('src') !== targetSrc) {
-                img.setAttribute('src', targetSrc);
-            }
-        });
-    }
-
-    window.addEventListener('load', switchImagesForMobile);
-    window.addEventListener('resize', switchImagesForMobile);
-</script>
 
         
     </body>
